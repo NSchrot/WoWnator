@@ -4,12 +4,15 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use App\Models\Mount;
 
 class MountSeeder extends Seeder
 {
 
     public function run(): void
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Mount::truncate();
         $mounts = [
             [
@@ -98,5 +101,8 @@ class MountSeeder extends Seeder
         foreach ($mounts as $mountData) {
             Mount::create($mountData);
         }
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
     }
 }

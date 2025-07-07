@@ -4,12 +4,15 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Quote;
+use Illuminate\Support\Facades\DB;
 
 class QuoteSeeder extends Seeder
 {
 
     public function run(): void
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Quote::truncate();
         $quotes = [
             ['text' => 'I\'m listening.', 'character_id' => 1],
@@ -26,5 +29,7 @@ class QuoteSeeder extends Seeder
         foreach ($quotes as $quoteData) {
             Quote::create($quoteData);
         }
+        
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }

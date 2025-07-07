@@ -4,11 +4,14 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Character;
+use Illuminate\Support\Facades\DB;
+
 
 class CharacterSeeder extends Seeder
 {
     public function run(): void
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Character::truncate();
         $characters = [
             [
@@ -76,5 +79,7 @@ class CharacterSeeder extends Seeder
         foreach ($characters as $characterData) {
             Character::create($characterData);
         }
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
