@@ -6,20 +6,24 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
         Schema::create('characters', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->unique();
+            $table->string('gender');
+            $table->string('class');
+            $table->string('race');
+            $table->string('faction');
+            $table->string('realm');
+            $table->string('xpac');
+            $table->string('image_url')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('characters');
