@@ -16,6 +16,7 @@ return new class extends Migration
         $table->string('class');
         $table->text('description');
         $table->string('xpac');
+        $table->string('image_url')->nullable();
         $table->timestamps();
         $table->softDeletes();
     });

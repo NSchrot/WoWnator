@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('realm');
             $table->string('xpac');
             $table->string('image_url')->nullable();
+            $table->string('splash_url')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

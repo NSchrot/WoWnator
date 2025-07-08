@@ -10,5 +10,5 @@ class Character extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['name', 'gender', 'class', 'race', 'faction', 'realm', 'xpac', 'image_url'];
+    protected $fillable = ['name', 'gender', 'class', 'race', 'faction', 'realm', 'xpac', 'image_url', 'splash_url'];
 }

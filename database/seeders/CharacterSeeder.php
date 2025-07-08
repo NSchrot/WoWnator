@@ -22,7 +22,8 @@ class CharacterSeeder extends Seeder
                 'faction' => 'Alliance',
                 'realm' => 'Kul Tiras',
                 'xpac' => 'Classic',
-                'image_url' => '',
+                'image_url' => 'https://res.cloudinary.com/dpebql3aj/image/upload/v1751932309/jaina_face_awtapq.png',
+                'splash_url' => 'https://res.cloudinary.com/dpebql3aj/image/upload/v1751932329/jaina_splash_yyfexl.png',
             ],
             [
                 'name' => 'Thrall',
@@ -32,7 +33,8 @@ class CharacterSeeder extends Seeder
                 'faction' => 'Horde',
                 'realm' => 'Durotar',
                 'xpac' => 'Classic',
-                'image_url' => '',
+                'image_url' => 'https://res.cloudinary.com/dpebql3aj/image/upload/v1751932317/thrall_face_sg2ll2.png',
+                'splash_url' => 'https://res.cloudinary.com/dpebql3aj/image/upload/v1751932366/thrall_splash_luzlua.png',
             ],
             [
                 'name' => 'Sylvanas Windrunner',
@@ -42,7 +44,8 @@ class CharacterSeeder extends Seeder
                 'faction' => 'Horde',
                 'realm' => 'Undercity',
                 'xpac' => 'Classic',
-                'image_url' => '',
+                'image_url' => 'https://res.cloudinary.com/dpebql3aj/image/upload/v1751932314/sylvanas_face_u7ggmd.png',
+                'splash_url' => 'https://res.cloudinary.com/dpebql3aj/image/upload/v1751932312/sylvanas_splash_jkikp6.png',
             ],
             [
                 'name' => 'Anduin Wrynn',
@@ -52,7 +55,8 @@ class CharacterSeeder extends Seeder
                 'faction' => 'Alliance',
                 'realm' => 'Stormwind',
                 'xpac' => 'Mists of Pandaria',
-                'image_url' => '',
+                'image_url' => 'https://res.cloudinary.com/dpebql3aj/image/upload/v1751925596/anduin_face.png',
+                'splash_url' => 'https://res.cloudinary.com/dpebql3aj/image/upload/v1751925659/anduin_splash.png',
             ],
             [
                 'name' => 'Arthas Menethil (The Lich King)',
@@ -62,7 +66,8 @@ class CharacterSeeder extends Seeder
                 'faction' => 'Scourge',
                 'realm' => 'Icecrown Citadel',
                 'xpac' => 'Wrath of the Lich King',
-                'image_url' => '',
+                'image_url' => 'https://res.cloudinary.com/dpebql3aj/image/upload/v1751932314/arthas_face_w360jw.png',
+                'splash_url' => 'https://res.cloudinary.com/dpebql3aj/image/upload/v1751932339/arthas_splash_gjbdbq.png',
             ],
             [
                 'name' => 'Illidan Stormrage',
@@ -72,7 +77,8 @@ class CharacterSeeder extends Seeder
                 'faction' => 'Illidari',
                 'realm' => 'Black Temple',
                 'xpac' => 'The Burning Crusade',
-                'image_url' => '',
+                'image_url' => 'https://res.cloudinary.com/dpebql3aj/image/upload/v1751932322/illidan_face_hxdqvk.png',
+                'splash_url' => 'https://res.cloudinary.com/dpebql3aj/image/upload/v1751932317/illidan_splash_oha17u.png',
             ],
         ];
 

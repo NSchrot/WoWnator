@@ -10,5 +10,5 @@ class Mount extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['name', 'type', 'faction', 'xpac', 'source', 'image_url'];
+    protected $fillable = ['name', 'type', 'faction', 'xpac', 'source','description', 'image_url', 'icon_url'];
 }

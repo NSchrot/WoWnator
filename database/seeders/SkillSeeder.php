@@ -23,6 +23,7 @@ class SkillSeeder extends Seeder
                 'class' => 'Mage',
                 'description' => 'Hurls a fiery ball that causes Fire damage.',
                 'xpac' => 'Classic',
+                'image_url' => 'https://res.cloudinary.com/dpebql3aj/image/upload/v1751932482/Spell_Fire_FlameBolt_m8bo31.png',
             ],
             [
                 'name' => 'Blink',
@@ -31,6 +32,7 @@ class SkillSeeder extends Seeder
                 'class' => 'Mage',
                 'description' => 'Teleports the caster 20 yards forward, unless something is in the way.',
                 'xpac' => 'Classic',
+                'image_url' => 'https://res.cloudinary.com/dpebql3aj/image/upload/v1751932482/Spell_Arcane_Blink_b97piq.png',
             ],
             [
                 'name' => 'Charge',
@@ -39,6 +41,7 @@ class SkillSeeder extends Seeder
                 'class' => 'Warrior',
                 'description' => 'Charge to an enemy, stunning it for 1 sec.',
                 'xpac' => 'Classic',
+                'image_url' => 'https://res.cloudinary.com/dpebql3aj/image/upload/v1751932482/Ability_Warrior_Charge_zdg1e1.png',
             ],
             [
                 'name' => 'Stealth',
@@ -47,6 +50,7 @@ class SkillSeeder extends Seeder
                 'class' => 'Rogue',
                 'description' => 'Conceals you in the shadows, reducing the chance for enemies to detect your presence.',
                 'xpac' => 'Classic',
+                'image_url' => 'https://res.cloudinary.com/dpebql3aj/image/upload/v1751932482/Ability_Stealth_fgvx1u.png',
             ],
             [
                 'name' => 'Chain Lightning',
@@ -55,6 +59,7 @@ class SkillSeeder extends Seeder
                 'class' => 'Shaman',
                 'description' => 'Hurls a lightning bolt at the enemy, dealing Nature damage and then jumping to additional nearby enemies.',
                 'xpac' => 'Classic',
+                'image_url' => 'https://res.cloudinary.com/dpebql3aj/image/upload/v1751932483/Spell_Nature_ChainLightning_wygudz.png',
             ],
             [
                 'name' => 'Death Grip',
@@ -63,6 +68,7 @@ class SkillSeeder extends Seeder
                 'class' => 'Death Knight',
                 'description' => 'Harnesses the energy that surrounds and binds all matter, drawing the target toward the Death Knight.',
                 'xpac' => 'Wrath of the Lich King',
+                'image_url' => 'https://res.cloudinary.com/dpebql3aj/image/upload/v1751932482/Spell_DeathKnight_Strangulate_lesrdl.png',
             ],
         ];
 

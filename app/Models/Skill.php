@@ -10,5 +10,5 @@ class Skill extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['name', 'type', 'race', 'class', 'description', 'xpac'];
+    protected $fillable = ['name', 'type', 'race', 'class', 'description', 'xpac', 'image_url'];
 }

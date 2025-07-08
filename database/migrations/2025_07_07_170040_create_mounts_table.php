@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('faction');
             $table->string('xpac');
             $table->string('source');
+            $table->text('description')->nullable();
             $table->string('image_url')->nullable();
+            $table->string('icon_url')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

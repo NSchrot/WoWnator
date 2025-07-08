@@ -33,6 +33,7 @@ class CharacterController extends Controller
         'realm' => 'required|string',
         'xpac' => 'required|string',
         'image_url' => 'nullable|url',
+        'splash_url' => 'nullable|url',
         ]);
 
         Character::create($validatedData);
@@ -64,6 +65,7 @@ class CharacterController extends Controller
                 'realm' => 'required|string',
                 'xpac' => 'required|string',
                 'image_url' => 'nullable|url',
+                'splash_url' => 'nullable|url',
         ]);
 
         $character->update($validatedData);

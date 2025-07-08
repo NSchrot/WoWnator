@@ -53,6 +53,10 @@
                                 <x-text-input id="image_url" name="image_url" type="url" class="mt-1 block w-full" :value="old('image_url', $character->image_url)" />
                                 <x-input-error class="mt-2" :messages="$errors->get('image_url')" />
                             </div>
+                            <div class="md:col-span-2">
+                                <x-input-label for="splash_url" :value="__('URL do Splash (Opcional)')" />
+                                <x-text-input id="splash_url" name="splash_url" type="url" class="mt-1 block w-full" :value="old('splash_url', $character->splash_url)" />
+                                <x-input-error class="mt-2" :messages="$errors->get('splash_url')" />
                         </div>
                         <div class="flex items-center gap-4 mt-6">
                             <x-primary-button>{{ __('Atualizar') }}</x-primary-button>
