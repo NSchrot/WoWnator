@@ -9,7 +9,7 @@
         
             @if(!$hasGuessedCorrectly['quote'])
                 @php 
-                    $quoteCharacterOptions = json_encode($allCharacters->map(fn($c) => ['id' => $c->id, 'name' => $c->name])); 
+                    $quoteCharacterOptions = json_encode($allCharacters->map(fn($c) => ['id' => $c->id, 'name' => $c->name, 'image_url' => $c->image_url])); 
                     $guessedQuoteIds = json_encode($guessedIds['quote']); 
                 @endphp
         
@@ -80,7 +80,10 @@
                             <template x-if="filteredOptions.length > 0">
                                 <ul class="py-1" x-ref="dropdown">
                                     <template x-for="option in filteredOptions" :key="option.id">
-                                        <li class="px-4 py-2 text-white cursor-pointer hover:bg-stone-700 transition-colors duration-150" tabindex="-1" x-text="option.name" @click="selectOption(option)" @keydown.enter.prevent="selectOption(option)"></li>
+                                        <li class="px-4 py-2 text-white cursor-pointer hover:bg-stone-700 transition-colors duration-150 flex items-center gap-3" tabindex="-1" @click="selectOption(option)" @keydown.enter.prevent="selectOption(option)">
+                                            <img :src="option.image_url" :alt="option.name" class="w-10 h-10 rounded-md object-cover">
+                                            <span x-text="option.name"></span>
+                                        </li>
                                     </template>
                                 </ul>
                             </template>
