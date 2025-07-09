@@ -71,7 +71,7 @@
                     <h2 class="text-5xl md:text-7xl font-black text-white font-heading uppercase tracking-wider" style="text-shadow: 0 0 15px rgba(250, 204, 21, 0.5);">Teste o seu Conhecimento</h2>
                     <p class="text-xl md:text-2xl text-wow-gold mt-4 font-semibold">O desafio diário para os heróis de Azeroth.</p>
                     <p class="mt-6 text-lg text-gray-300 max-w-2xl mx-auto">Adivinhe o personagem, a montaria, a zona e mais. Um novo desafio todos os dias. Você está à altura?</p>
-                    <a href="{{ route('register') }}" class="mt-8 inline-block bg-wow-gold text-stone-900 font-bold py-4 px-8 rounded-lg text-lg uppercase hover:bg-yellow-400 transform hover:scale-105 transition-all duration-300">
+                    <a href="{{ route('login') }}" class="mt-8 inline-block bg-wow-gold text-stone-900 font-bold py-4 px-8 rounded-lg text-lg uppercase hover:bg-yellow-400 transform hover:scale-105 transition-all duration-300">
                         Jogar Agora
                     </a>
                 </div>
