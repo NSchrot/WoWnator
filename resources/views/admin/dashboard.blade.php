@@ -1,4 +1,7 @@
 <x-admin-layout>
+    <x-slot:title>
+        WoWnator - Admin - Dashboard
+    </x-slot:title>
     <div x-data="{ show: false }" x-init="$nextTick(() => show = true)">
 
         <div x-show="show" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 -translate-y-5" x-transition:enter-end="opacity-100 translate-y-0">

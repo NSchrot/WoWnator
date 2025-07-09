@@ -1,4 +1,7 @@
 <x-app-layout>
+    <x-slot:title>
+        WoWnator - Jogar
+    </x-slot:title>
     @php
         if (!function_exists('getComparisonClass')) {
             function getComparisonClass($guessValue, $correctValue) {

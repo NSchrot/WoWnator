@@ -1,4 +1,7 @@
 <x-guest-layout>
+    <x-slot:title>
+        WoWnator - Registrar
+    </x-slot:title>
     <style>
         .faction-radio:checked + label { border-color: #facc15; box-shadow: 0 0 15px rgba(250, 204, 21, 0.5); }
         .faction-radio:checked + label img { transform: scale(1.1); filter: saturate(1.2); }

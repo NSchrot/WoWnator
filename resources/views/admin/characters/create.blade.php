@@ -1,4 +1,7 @@
 <x-admin-layout>
+    <x-slot:title>
+            WoWnator - Admin - Adicionar Personagem
+    </x-slot:title>
     <div x-data="{ show: false }" x-init="$nextTick(() => show = true)">
         <div x-show="show" 
              x-transition:enter="transition ease-out duration-500" 

@@ -1,4 +1,7 @@
 <x-guest-layout>
+    <x-slot name="title">
+        WoWnator - Confirmar Senha
+    </x-slot>
     <div class="mb-4 text-sm text-white">
         {{ __('Esta é uma área segura do aplicativo. Por favor, confirme sua senha antes de continuar.') }}
     </div>

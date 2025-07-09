@@ -1,4 +1,7 @@
 <x-app-layout>
+    <x-slot:title>
+        WoWnator - Meu Perfil
+    </x-slot:title>
     <x-slot name="header">
         <h2 class="font-heading font-bold text-2xl text-wow-gold leading-tight">
             {{ __('Meu Perfil') }}

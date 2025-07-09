@@ -1,4 +1,7 @@
 <x-guest-layout>
+    <x-slot:title>
+        WoWnator - Verificar E-mail
+    </x-slot:title>
     <div class="mb-4 text-sm text-white">
         {{ __('Obrigado por se registrar! Antes de começar, confirme seu endereço de e-mail clicando no link que enviamos para você. Caso não tenha recebido o e-mail, podemos reenviá-lo.') }}
     </div>

@@ -1,4 +1,7 @@
 <x-guest-layout>
+    <x-slot:title>
+        WoWnator - Esqueci minha senha
+    </x-slot:title>
     <div class="mb-4 text-sm text-white">
         {{ __('Esqueceu-se da sua senha? Sem problemas. Diga-nos o seu endereço de e-mail e nós enviaremos um link para redefinir a senha que lhe permitirá escolher uma nova.') }}
     </div>

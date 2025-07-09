@@ -1,4 +1,7 @@
 <x-guest-layout>
+    <x-slot:title>
+        WoWnator - Login
+    </x-slot:title>
     <x-auth-session-status class="mb-4" :status="session('status')" />
     <form method="POST" action="{{ route('login') }}">
         @csrf

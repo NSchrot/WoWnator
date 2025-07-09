@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }} - Admin</title>
+    <title>{{ $title ?? (config('app.name', 'Laravel') . ' - Admin') }}</title>
     
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="icon" type="image/png" href="https://assets-bwa.worldofwarcraft.blizzard.com/static/wow-icon-32x32.1a38d7c1c3d8df560d53f5c2ad5442c0401edf83.png">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
@@ -28,7 +30,8 @@
     </div>
     <div class="relative min-h-screen bg-stone-900/70">
         <div x-data="{ sidebarOpen: true }" class="flex h-screen">
-            <aside class="bg-stone-800/80 backdrop-blur-sm text-gray-300 w-64 p-4 flex-shrink-0 flex flex-col justify-between transition-all duration-300" :class="sidebarOpen ? 'w-64' : 'w-0 p-0 overflow-hidden'">
+            <aside class="bg-stone-800/80 backdrop-blur-sm text-gray-300 flex-shrink-0 flex flex-col justify-between transition-all duration-300"
+                :class="sidebarOpen ? 'w-64 p-4' : 'w-0 p-0 overflow-hidden'">
                 <div :class="{'opacity-0': !sidebarOpen}" class="transition-opacity duration-200">
                     <a href="{{ route('admin.dashboard') }}" class="text-orange-500 text-2xl font-bold font-heading mb-6 block">WOWNATOR ADMIN</a>
                     <nav class="space-y-2">

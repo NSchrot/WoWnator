@@ -1,4 +1,7 @@
 <x-admin-layout>
+    <x-slot:title>
+        WoWnator - Admin - Citações
+    </x-slot:title>
     <div x-data="{ deleteModalOpen: false, deleteUrl: '', show: false }" x-init="$nextTick(() => show = true)">
         <div x-show="show" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 -translate-y-5" x-transition:enter-end="opacity-100 translate-y-0" class="flex justify-between items-center mb-4">
             <h1 class="text-2xl font-bold text-white font-heading">Citações</h1>

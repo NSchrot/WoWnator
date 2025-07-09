@@ -1,4 +1,7 @@
 <x-admin-layout>
+    <x-slot:title>
+        WoWnator - Admin - Jogador: {{ $user->name }}
+    </x-slot:title>
     @php
         if (!function_exists('getComparisonClass')) {
             function getComparisonClass($guessValue, $correctValue) {

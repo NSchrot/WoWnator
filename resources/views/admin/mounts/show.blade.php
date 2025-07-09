@@ -1,4 +1,7 @@
 <x-admin-layout>
+    <x-slot:title>
+            WoWnator - Admin - Montaria: {{ $mount->name }}
+    </x-slot:title>
     <div x-data="{ show: false }" x-init="$nextTick(() => show = true)">
         <div x-show="show" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-5" x-transition:enter-end="opacity-100 translate-y-0" class="bg-stone-800/70 backdrop-blur-sm p-6 rounded-lg shadow">
             <div class="flex flex-col md:flex-row gap-6">

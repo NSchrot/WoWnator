@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WOWNATOR - O Desafio Diário de World of Warcraft</title>
+    <title>WoWnator</title>
+
+    <link rel="icon" type="image/png" href="https://assets-bwa.worldofwarcraft.blizzard.com/static/wow-icon-32x32.1a38d7c1c3d8df560d53f5c2ad5442c0401edf83.png">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     

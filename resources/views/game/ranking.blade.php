@@ -1,4 +1,7 @@
 <x-app-layout>
+    <x-slot:title>
+        WoWnator - Classificação das Facções
+    </x-slot:title>
     <x-slot name="header">
         <h2 class="font-heading font-bold text-2xl text-wow-gold leading-tight">
             {{ __('Classificação das Facções') }}
