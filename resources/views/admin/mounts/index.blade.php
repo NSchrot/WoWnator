@@ -1,8 +1,8 @@
 <x-admin-layout>
     <div x-data="{ deleteModalOpen: false, deleteUrl: '', show: false }" x-init="$nextTick(() => show = true)">
         <div x-show="show" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 -translate-y-5" x-transition:enter-end="opacity-100 translate-y-0" class="flex justify-between items-center mb-4">
-            <h1 class="text-2xl font-bold text-white font-heading">Habilidades</h1>
-            <a href="{{ route('admin.skills.create') }}" class="bg-orange-600 text-white font-bold py-2 px-4 rounded hover:bg-orange-500 transition">Adicionar Habilidade</a>
+            <h1 class="text-2xl font-bold text-white font-heading">Montarias</h1>
+            <a href="{{ route('admin.mounts.create') }}" class="bg-orange-600 text-white font-bold py-2 px-4 rounded hover:bg-orange-500 transition">Adicionar Montaria</a>
         </div>
 
         <div x-show="show" x-transition:enter="transition ease-out duration-500 delay-100" x-transition:enter-start="opacity-0 translate-y-5" x-transition:enter-end="opacity-100 translate-y-0" class="bg-stone-800/70 backdrop-blur-sm rounded-lg shadow overflow-x-auto">
