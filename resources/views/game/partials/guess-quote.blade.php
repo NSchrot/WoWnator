@@ -8,6 +8,11 @@
             </div>
         
             @if(!$hasGuessedCorrectly['quote'])
+                <div class="text-center text-stone-400 mb-4">
+                    Tentativas restantes: 
+                    <span class="font-bold text-wow-gold">{{ 15 - $guesses['quote']->count() }}</span>
+                </div>
+
                 @php 
                     $quoteCharacterOptions = json_encode($allCharacters->map(fn($c) => ['id' => $c->id, 'name' => $c->name, 'image_url' => $c->image_url])); 
                     $guessedQuoteIds = json_encode($guessedIds['quote']); 
@@ -64,6 +69,7 @@
         
                     <form x-on:submit.prevent="if(selectedId) $el.submit()" action="{{ route('game.guess.quote') }}" method="POST" class="flex items-center gap-2">
                         @csrf
+                        <input type="hidden" name="tab" value="quote">
                         <input type="hidden" name="character_id" x-model="selectedId">
                         <x-text-input type="text" class="w-full" placeholder="Digite o nome de um personagem..."
                             x-ref="searchInput"
@@ -95,7 +101,10 @@
                 </div>
             @else
                 <div class="text-center p-4 bg-green-900/50 border border-green-700 rounded-lg animate-fade-in">
-                    <p class="text-lg text-gray-200">Você já acertou a citação de hoje!</p>
+                    <p class="text-lg text-gray-200">
+                        Você acertou na 
+                        <span class="font-bold text-wow-gold">{{ $guesses['quote']->count() }}ª</span> tentativa!
+                    </p>
                     <div class="flex flex-col items-center mt-2">
                         <img src="{{ $challenge->quote->character->splash_url }}" alt="{{ $challenge->quote->character->name }}" class="h-52 rounded-lg object-cover border-4 border-wow-gold mb-2" onerror="this.src='https://placehold.co/600x400/2d3748/ffffff?text=Personagem'; this.onerror=null;">
                         <p class="text-2xl font-bold text-white font-heading">{{ $challenge->quote->character->name }}</p>
@@ -113,6 +122,10 @@
                         <span class="ml-4 text-xl font-bold">{{ $guessedCharacter->name }}</span>
                     </div>
                 @endforeach
+            </div>
+            <div class="mt-8 flex justify-center items-center space-x-4 text-sm">
+                <div class="flex items-center"><div class="w-5 h-5 bg-green-500 rounded-md mr-2"></div><span>Correto</span></div>
+                <div class="flex items-center"><div class="w-5 h-5 bg-red-600 rounded-md mr-2"></div><span>Incorreto</span></div>
             </div>
         @endif
     </div>

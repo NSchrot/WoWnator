@@ -15,6 +15,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@wownator.com',
             'password' => Hash::make('password'),
             'role_id' => 1,
+            'faction' => 'Alliance',
             'email_verified_at' => now(),
         ]);
         User::create([
@@ -22,6 +23,7 @@ class UserSeeder extends Seeder
             'email' => 'player@wownator.com',
             'password' => Hash::make('password'),
             'role_id' => 2,
+            'faction' => 'Horde',
             'email_verified_at' => now(),
         ]);
     }

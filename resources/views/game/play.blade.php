@@ -20,7 +20,7 @@
                             <h3 class="text-lg font-bold text-center">O desafio de hoje ainda não foi gerado. Volte mais tarde!</h3>
                         @else
                             <div class="border-b border-stone-700 mb-4">
-                                <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+                                <nav class="-mb-px flex justify-center space-x-4 md:space-x-8" aria-label="Tabs">
                                     <a href="#character" @click="activeTab = 'character'" :class="{ 'border-wow-gold text-wow-gold': activeTab === 'character', 'border-transparent text-stone-400 hover:text-stone-200 hover:border-stone-500': activeTab !== 'character' }" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors duration-200">Personagem</a>
                                     <a href="#zone" @click="activeTab = 'zone'" :class="{ 'border-wow-gold text-wow-gold': activeTab === 'zone', 'border-transparent text-stone-400 hover:text-stone-200 hover:border-stone-500': activeTab !== 'zone' }" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors duration-200">Zona</a>
                                     <a href="#mount" @click="activeTab = 'mount'" :class="{ 'border-wow-gold text-wow-gold': activeTab === 'mount', 'border-transparent text-stone-400 hover:text-stone-200 hover:border-stone-500': activeTab !== 'mount' }" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors duration-200">Montaria</a>

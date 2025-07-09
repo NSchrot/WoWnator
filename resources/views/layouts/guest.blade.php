@@ -6,24 +6,42 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-        <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div>
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
+        <style>
+            .video-background-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -10; }
+            .video-background { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; transform: translateX(-50%) translateY(-50%); object-fit: cover; }
+            .font-heading { font-family: 'Cinzel', serif; }
+        </style>
+    </head>
+    <body class="font-sans text-gray-300 antialiased">
+        <div class="video-background-container">
+            <video autoplay muted loop playsinline class="video-background">
+                <source src="https://res.cloudinary.com/dpebql3aj/video/upload/v1752035066/videoplayback_3_r5jene.webm" type="video/webm">
+            </video>
+        </div>
+
+        <div class="relative min-h-screen bg-stone-900/40">
+            
+            <header class="fixed top-0 left-0 right-0 z-10 bg-black/20 backdrop-blur-lg border-b border-stone-500/30">
+                <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-center items-center">
+                    <div class="text-center">
+                        <a href="/">
+                            <h1 class="text-3xl font-bold text-wow-gold font-heading">WOWNATOR</h1>
+                        </a>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="min-h-screen flex flex-col justify-center items-center pt-6 sm:pt-0">
+                <div class="w-full sm:max-w-md px-6 py-8 bg-black/20 backdrop-blur-lg border border-stone-500/50 shadow-2xl overflow-hidden sm:rounded-lg">
+                    {{ $slot }}
+                </div>
             </div>
         </div>
     </body>

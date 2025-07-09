@@ -8,6 +8,11 @@
             </div>
         
             @if(!$hasGuessedCorrectly['skill'])
+                <div class="text-center text-stone-400 mb-4">
+                    Tentativas restantes: 
+                    <span class="font-bold text-wow-gold">{{ 15 - $guesses['skill']->count() }}</span>
+                </div>
+
                 @php 
                     $skillOptions = json_encode($allSkills->map(fn($s) => ['id' => $s->id, 'name' => $s->name, 'image_url' => $s->image_url])); 
                     $guessedSkillIds = json_encode($guessedIds['skill']); 
@@ -64,6 +69,7 @@
         
                     <form x-on:submit.prevent="if(selectedId) $el.submit()" action="{{ route('game.guess.skill') }}" method="POST" class="flex items-center gap-2">
                         @csrf
+                        <input type="hidden" name="tab" value="skill">
                         <input type="hidden" name="skill_id" x-model="selectedId">
                         <x-text-input type="text" class="w-full" placeholder="Digite o nome de uma habilidade..."
                             x-ref="searchInput"
@@ -95,7 +101,10 @@
                 </div>
             @else
                 <div class="text-center p-4 bg-green-900/50 border border-green-700 rounded-lg animate-fade-in">
-                    <p class="text-lg text-gray-200">Você já acertou a habilidade de hoje!</p>
+                    <p class="text-lg text-gray-200">
+                        Você acertou na 
+                        <span class="font-bold text-wow-gold">{{ $guesses['skill']->count() }}ª</span> tentativa!
+                    </p>
                     <div class="flex flex-col items-center mt-2">
                         <img src="{{ $challenge->skill->image_url }}" alt="{{ $challenge->skill->name }}" class="h-20 w-20 rounded-lg object-cover border-4 border-green-400">
                         <p class="text-2xl font-bold text-white font-heading mt-2">{{ $challenge->skill->name }}</p>
@@ -108,7 +117,7 @@
         @if($guesses['skill']->isNotEmpty())
             <div class="mt-8 space-y-2">
                 <div class="hidden md:grid md:grid-cols-6 gap-2 text-center font-bold text-xs uppercase text-stone-300">
-                    <div class="p-2"></div>
+                    <div class="p-2"></div> 
                     <div class="p-2">Nome</div>
                     <div class="p-2">Tipo</div>
                     <div class="p-2">Raça</div>

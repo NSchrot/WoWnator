@@ -10,6 +10,10 @@ class DailyChallenge extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = ['date', 'character_id', 'zone_id', 'quote_id', 'mount_id', 'skill_id'];
+        protected $casts = [
+        'date' => 'datetime',
+    ];
+
 
     public function character() {
         return $this->belongsTo(Character::class);

@@ -8,17 +8,18 @@
             </div>
         
             @if(!$hasGuessedCorrectly['zone'])
+                <div class="text-center text-stone-400 mb-4">
+                    Tentativas restantes: 
+                    <span class="font-bold text-wow-gold">{{ 15 - $guesses['zone']->count() }}</span>
+                </div>
+        
                 @php 
                     $zoneOptions = json_encode($allZones->map(fn($z) => ['id' => $z->id, 'name' => $z->name, 'image_url' => $z->image_url])); 
                     $guessedZoneIds = json_encode($guessedIds['zone']); 
                 @endphp
         
                 <div x-data="{
-                        searchTerm: '',
-                        selectedId: null,
-                        options: {{ $zoneOptions }},
-                        guessedIds: {{ $guessedZoneIds }},
-                        open: false,
+                        searchTerm: '', selectedId: null, options: {{ $zoneOptions }}, guessedIds: {{ $guessedZoneIds }}, open: false,
                         get filteredOptions() {
                             if (this.searchTerm === '') return [];
                             return this.options.filter(option => 
@@ -26,51 +27,30 @@
                                 !this.guessedIds.includes(option.id)
                             ).slice(0, 5);
                         },
-                        selectOption(option) {
-                            this.searchTerm = option.name;
-                            this.selectedId = option.id;
-                            this.open = false;
-                        },
-                        reset() {
-                            this.searchTerm = '';
-                            this.selectedId = null;
-                            this.open = false;
-                        },
+                        selectOption(option) { this.searchTerm = option.name; this.selectedId = option.id; this.open = false; },
+                        reset() { this.searchTerm = ''; this.selectedId = null; this.open = false; },
                         positionDropdown() {
                             const input = this.$refs.searchInput;
                             const dropdown = document.getElementById('zone-dropdown-container');
                             if (!dropdown || !input) return;
-        
                             const rect = input.getBoundingClientRect();
                             dropdown.style.left = `${rect.left}px`;
                             dropdown.style.top = `${rect.bottom + window.scrollY}px`;
                             dropdown.style.width = `${rect.width}px`;
                         }
                     }"
-                     x-init="
-                        $watch('open', isOpen => {
-                            if (isOpen) {
-                                $nextTick(() => positionDropdown());
-                                window.addEventListener('scroll', positionDropdown, true);
-                                window.addEventListener('resize', positionDropdown);
-                            } else {
-                                window.removeEventListener('scroll', positionDropdown, true);
-                                window.removeEventListener('resize', positionDropdown);
-                            }
-                        });
-                     "
+                     x-init="$watch('open', isOpen => { if (isOpen) { $nextTick(() => positionDropdown()); window.addEventListener('scroll', positionDropdown, true); window.addEventListener('resize', positionDropdown); } else { window.removeEventListener('scroll', positionDropdown, true); window.removeEventListener('resize', positionDropdown); } });"
                      x-on:click.outside="open = false"
                      class="relative max-w-sm mx-auto">
         
                     <form x-on:submit.prevent="if(selectedId) $el.submit()" action="{{ route('game.guess.zone') }}" method="POST" class="flex items-center gap-2">
                         @csrf
+                        <input type="hidden" name="tab" value="zone">
                         <input type="hidden" name="zone_id" x-model="selectedId">
                         <x-text-input type="text" class="w-full" placeholder="Digite o nome de uma zona..."
-                            x-ref="searchInput"
-                            x-model="searchTerm"
+                            x-ref="searchInput" x-model="searchTerm"
                             @input.debounce.300ms="selectedId = null; open = true"
-                            @focus="open = true"
-                            @keydown.escape.prevent="reset()"
+                            @focus="open = true" @keydown.escape.prevent="reset()"
                             @keydown.down.prevent="$focus.wrap($refs.dropdown).next()" />
                         <x-primary-button x-bind:disabled="!selectedId">{{ __('Adivinhar') }}</x-primary-button>
                     </form>
@@ -95,15 +75,16 @@
                 </div>
             @else
                 <div class="text-center p-4 bg-green-900/50 border border-green-700 rounded-lg animate-fade-in">
-                    <p class="text-lg text-gray-200">Você já acertou a zona de hoje!</p>
-                    <p class="text-2xl font-bold text-white font-heading">{{ $challenge->zone->name }}</p>
+                    <p class="text-lg text-gray-200">Você acertou na <span class="font-bold text-wow-gold">{{ $guesses['zone']->count() }}ª</span> tentativa!</p>
+                    <p class="text-2xl font-bold text-white font-heading mt-2">{{ $challenge->zone->name }}</p>
                 </div>
             @endif
         </div>
         
         @if($guesses['zone']->isNotEmpty())
             <div class="mt-8 space-y-2">
-                <div class="hidden md:grid md:grid-cols-2 gap-2 text-center font-bold text-xs uppercase text-stone-300">
+                <div class="hidden md:grid md:grid-cols-3 gap-2 text-center font-bold text-xs uppercase text-stone-300">
+                    <div class="p-2"></div>
                     <div class="p-2">Zona</div>
                     <div class="p-2">Continente</div>
                 </div>
@@ -112,8 +93,12 @@
                         $correctZone = $challenge->zone;
                         $guessedZone = $guess->details; 
                     @endphp
-                    <div class="grid grid-cols-2 gap-1 md:gap-2 text-white text-center text-sm rounded-lg animate-fade-in">
-                        <div class="flex items-center justify-center p-2 rounded-md {{ getComparisonClass($guessedZone->id, $correctZone->id) }}">
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-2 text-white text-center text-sm rounded-lg animate-fade-in">
+                        <div class="hidden md:flex items-center justify-center p-1 bg-stone-700 rounded-md">
+                            <img src="{{ $guessedZone->image_url ?? '' }}" alt="{{ $guessedZone->name ?? '' }}" class="h-full w-full object-cover rounded-md" onerror="this.style.display='none'">
+                        </div>
+                        <div class="col-span-2 md:col-span-1 flex items-center justify-center p-2 rounded-md {{ getComparisonClass($guessedZone->id, $correctZone->id) }}">
+                            <img src="{{ $guessedZone->image_url ?? '' }}" alt="{{ $guessedZone->name ?? '' }}" class="h-10 w-10 object-cover rounded-md inline-block mr-2 md:hidden" onerror="this.style.display='none'">
                             <span class="font-bold">{{ $guessedZone->name }}</span>
                         </div>
                         <div class="flex items-center justify-center p-2 rounded-md {{ getComparisonClass($guessedZone->continent, $correctZone->continent) }}">{{ $guessedZone->continent }}</div>

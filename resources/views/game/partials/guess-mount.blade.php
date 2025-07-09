@@ -8,6 +8,11 @@
             </div>
         
             @if(!$hasGuessedCorrectly['mount'])
+                <div class="text-center text-stone-400 mb-4">
+                    Tentativas restantes: 
+                    <span class="font-bold text-wow-gold">{{ 15 - $guesses['mount']->count() }}</span>
+                </div>
+
                 @php 
                     $mountOptions = json_encode($allMounts->map(fn($m) => ['id' => $m->id, 'name' => $m->name, 'icon_url' => $m->icon_url])); 
                     $guessedMountIds = json_encode($guessedIds['mount']); 
@@ -40,6 +45,7 @@
                             const input = this.$refs.searchInput;
                             const dropdown = document.getElementById('mount-dropdown-container');
                             if (!dropdown || !input) return;
+        
                             const rect = input.getBoundingClientRect();
                             dropdown.style.left = `${rect.left}px`;
                             dropdown.style.top = `${rect.bottom + window.scrollY}px`;
@@ -63,6 +69,7 @@
         
                     <form x-on:submit.prevent="if(selectedId) $el.submit()" action="{{ route('game.guess.mount') }}" method="POST" class="flex items-center gap-2">
                         @csrf
+                        <input type="hidden" name="tab" value="mount">
                         <input type="hidden" name="mount_id" x-model="selectedId">
                         <x-text-input type="text" class="w-full" placeholder="Digite o nome de uma montaria..."
                             x-ref="searchInput"
@@ -94,7 +101,10 @@
                 </div>
             @else
                 <div class="text-center p-4 bg-green-900/50 border border-green-700 rounded-lg animate-fade-in">
-                    <p class="text-lg text-gray-200">Você já acertou a montaria de hoje!</p>
+                    <p class="text-lg text-gray-200">
+                        Você acertou na 
+                        <span class="font-bold text-wow-gold">{{ $guesses['mount']->count() }}ª</span> tentativa!
+                    </p>
                     <div class="flex flex-col items-center justify-center my-4">
                         <img src="{{ $challenge->mount->icon_url }}" alt="{{ $challenge->mount->name }}" class="h-20 w-20 rounded-md shadow-lg border-2 border-stone-700 mb-4" onerror="this.style.display='none'">
                         <p class="text-2xl font-bold text-white font-heading">{{ $challenge->mount->name }}</p>
@@ -122,21 +132,17 @@
                         $guessedMount = $guess->details; 
                     @endphp
                     <div class="grid grid-cols-2 md:grid-cols-6 gap-1 md:gap-2 text-white text-center text-sm rounded-lg animate-fade-in">
-                        
                         <div class="hidden md:flex items-center justify-center p-1 bg-stone-700 rounded-md">
                             <img src="{{ $guessedMount->icon_url ?? '' }}" alt="{{ $guessedMount->name ?? '' }}" class="h-full w-full object-cover rounded-md" onerror="this.style.display='none'">
                         </div>
-
                         <div class="col-span-2 md:col-span-1 flex items-center justify-center p-2 rounded-md {{ getComparisonClass($guessedMount->id, $correctMount->id) }}">
                             <img src="{{ $guessedMount->icon_url ?? '' }}" alt="{{ $guessedMount->name ?? '' }}" class="h-10 w-10 object-cover rounded-md inline-block mr-2 md:hidden" onerror="this.style.display='none'">
                             <span class="font-bold">{{ $guessedMount->name ?? 'N/A' }}</span>
                         </div>
-                        
                         <div class="flex items-center justify-center p-2 rounded-md {{ getComparisonClass($guessedMount->type ?? null, $correctMount->type ?? null) }}">{{ $guessedMount->type ?? 'N/A' }}</div>
                         <div class="flex items-center justify-center p-2 rounded-md {{ getComparisonClass($guessedMount->faction ?? null, $correctMount->faction ?? null) }}">{{ $guessedMount->faction ?? 'N/A' }}</div>
                         <div class="flex items-center justify-center p-2 rounded-md {{ getComparisonClass($guessedMount->xpac ?? null, $correctMount->xpac ?? null) }}">{{ $guessedMount->xpac ?? 'N/A' }}</div>
                         <div class="flex items-center justify-center p-2 rounded-md {{ getComparisonClass($guessedMount->source ?? null, $correctMount->source ?? null) }}">{{ $guessedMount->source ?? 'N/A' }}</div>
-
                     </div>
                 @endforeach
             </div>
